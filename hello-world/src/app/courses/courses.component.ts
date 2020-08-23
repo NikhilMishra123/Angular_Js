@@ -1,29 +1,36 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component } from '@angular/core';
+import {CoursesService} from './courses.service';
 @Component({
   selector: 'app-courses',
-  template : `<h2> Hello  world </h2>
-   	<p>{{ tittle+" ::: " }} </p>
-   	<ul>
-   		<li *ngFor = 'let course of courses'>
-   		{{course}}
-   		</li>
-   	</ul>`
+  template : `
+   	<p>{{ title+" ::: " }} </p> 
+   		<p *ngFor = 'let co of course'>
+   			<b> {{ "Title " + (co.title | uppercase)}}</b> <br>
+   			{{ "Student Enrolled " + (co.students | number)}} <br> 
+   			{{ "Rating  " +co.rating}} <br>
+   			{{ "Price " +co.price}} <br>
+   			{{ "Date " + (co.relase_date)}} <br> 
+   		</p>
+   	 	`
+   	
 
 // // Note   there should be no space between {{ }} parenthesis  
 
 //   templateUrl: './courses.component.html',
 //   styleUrls: ['./courses.component.css']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent {
 
-	tittle = " List of courses ";
+	title = " List of courses available ";
+	course;
+	// learning phase 1 
 	//courses ;
-	courses = [ 'course1' , 'course2' ,  'course3']
+	//courses = [ 'course1' , 'course2' ,  'course3']
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  constructor( service_obj : CoursesService)// Here I am using dependency injection 
+  	 {
+  	// let service_obj = new CoursesService(); // this makes our code tightly copled 
+	this.course = service_obj.getCourses();
+	console.log(this.course);
+   } 
 }
