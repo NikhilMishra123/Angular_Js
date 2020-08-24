@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,6 +9,7 @@ import {CoursesService} from './courses/courses.service';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { BootstrapPanelComponent } from './bootstrap-panel/bootstrap-panel.component';
 import { LearningDerivativesComponent } from './learning-derivatives/learning-derivatives.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 
 @NgModule({
@@ -16,11 +18,13 @@ import { LearningDerivativesComponent } from './learning-derivatives/learning-de
     CoursesComponent,
     FavouriteComponent,
     BootstrapPanelComponent,
-    LearningDerivativesComponent
+    LearningDerivativesComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
   	CoursesService

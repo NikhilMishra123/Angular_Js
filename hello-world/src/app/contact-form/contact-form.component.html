@@ -1,0 +1,134 @@
+
+
+<b> <p>contact-form works!</p></b>
+<!--
+		this is a simple form 
+<form>
+	<div class="form-group">
+		<label for="firstName">
+			First name 
+		</label>
+		<input  id="firstName" type="text" class="form-control">
+	</div>
+
+	<div class="form-group">
+		<label for="content">
+			Content 
+		</label>
+		<textarea id="content" cols="30" rows="10" type="text" class="form-control">
+			
+		</textarea>
+	</div>
+
+	<button class="btn btn-primary">Submit</button>
+</form>
+-->
+
+<!-- in this form we are creating the instance of form-control using ngmodel which we will letter use in validation check -->
+<!--<form>
+	<div class="form-group">
+		<label for="firstName">
+			First name 
+		</label>
+		<input ngModel name="firstName" #firstName="ngModel" id="firstName" type="text"  (change)="log(firstName)" class="form-control">
+		<div class="alert alert-danger" *ngIf="firstName.touched && !firstName.value.length"> not valid</div>
+	</div>
+
+	<div class="form-group">
+		<label for="content">
+			Content 
+		</label>
+		<textarea ngModel name="content" #content="ngModel" id="content" cols="30" rows="10"  class="form-control">
+			
+		</textarea>
+	</div>
+
+	<button class="btn btn-primary">Submit</button>
+</form>
+-->
+<!--  validation is added -->
+<!--
+<form>
+	<div class="form-group">
+		<label for="firstName">
+			First name 
+		</label>
+		<input ngModel name="firstName" #firstName="ngModel" id="firstName" type="text"  (change)="log(firstName)" class="form-control">
+		<div class="alert alert-danger" *ngIf="firstName.touched && !firstName.value.length"> not valid</div> 
+	</div>
+
+	<div class="form-group">
+		<label for="content">
+			Content 
+		</label>
+		<textarea ngModel name="content" #content="ngModel" id="content" cols="30" rows="10"  class="form-control">
+			
+		</textarea>
+	</div>
+
+	<button class="btn btn-primary">Submit</button>
+</form>
+
+-->
+
+<!-- specific validation error -->
+<!--
+<form>
+	<div class="form-group">
+		<label for="firstName">
+			First name 
+		</label>
+		<input 
+		required minlength="3" maxlength="10" pattern="Nikhil" 
+		ngModel name="firstName" #firstName="ngModel" id="firstName" type="text"  (change)="log(firstName)" class="form-control">
+		<div class="alert alert-danger" *ngIf="firstName.touched">
+				<div *ngIf="firstName.errors.required"> Name reqired </div>
+				<div *ngIf="firstName.errors.minlength"> Length is less than 3 </div>
+				<div *ngIf="firstName.errors.maxlength"> Length is more than 10 </div>
+				<div *ngIf="firstName.errors.pattern"> pattern is not mathing </div>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label for="content">
+			Content 
+		</label>
+		<textarea ngModel name="content" #content="ngModel" id="content" cols="30" rows="10"  class="form-control">
+			
+		</textarea>
+	</div>
+
+	<button class="btn btn-primary">Submit</button>
+</form>
+
+-->
+<!-- using ngForm and disabling the Submit button if form does not have valid data -->
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" >
+	<div class="form-group">
+		<label for="firstName">
+			First name 
+		</label>
+		<input 
+		required minlength="3" maxlength="10" pattern="Nikhil" 
+		ngModel name="firstName" #firstName="ngModel" id="firstName" type="text"  (change)="log(firstName)" class="form-control">
+		<div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+				<div *ngIf="firstName.errors.required"> Name reqired </div>
+				<div *ngIf="firstName.errors.minlength"> Length is less than 3 </div>
+				<div *ngIf="firstName.errors.maxlength"> Length is more than 10 </div>
+				<div *ngIf="firstName.errors.pattern"> pattern is not mathing </div>
+		</div> <!-- marked -->
+	</div>
+
+	<div class="form-group">
+		<label for="content">
+			Content 
+		</label>
+		<textarea ngModel name="content" #content="ngModel" id="content" cols="30" rows="10"  class="form-control">
+			
+		</textarea>
+	</div>
+		<p>
+			{{ f.value | json}}
+		</p>
+	<button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+</form>
