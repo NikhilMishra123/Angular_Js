@@ -1,0 +1,67 @@
+<p>learning-derivatives works!</p>
+
+
+<div *ngIf = "this.courses.length>0">
+	List of Courses
+</div>
+
+<div *ngIf = "this.courses.length==0" >
+	No course available 
+</div>
+
+
+<p> way of doing this is </p>
+
+<div *ngIf = "this.courses.length>0; then courseAvailable else noCourse"></div>
+<ng-template #courseAvailable>
+	List of Courses
+</ng-template>
+<ng-template #noCourse>
+	No Course Available
+</ng-template>
+
+<br> <br>
+<p> <b>  Now using hidden property </b></p>
+<div [hidden]="this.courses.length==0">
+	Courses Available 
+</div>
+<div [hidden]="this.courses.length>0">
+	Course Not Available 
+</div>
+
+<br><br>
+<p> <b>  Now using Switch case  </b></p>
+<ul class="nav nav-pills">
+	<li [class.active]="viewMode=='map'">
+		<a (click)="viewMode='map'">
+			Map
+		</a>
+	</li>
+	<li [class.active]="viewMode=='list'">
+		<a (click)="viewMode='list'">
+			List
+		</a>
+	</li>
+</ul>
+<div [ngSwitch]="viewMode">
+	<div *ngSwitchCase="'map'">Map course</div>
+	<div *ngSwitchCase="'list'">List course</div>
+	<div *ngSwitchDefault>Otherwise</div>
+</div>
+
+<br><br>
+<p> <b>  Now using For case  </b></p>
+<span *ngFor="let co of this.courses; index as i">
+	{{i}}-{{co.title}}<br>
+</span>
+
+<b> Pending Have to implement change Detection and TrackBy</b>
+
+<br><br>
+<p> Safe Traversal Operator</p>
+<span *ngFor='let task of this.tasks'>
+	{{task.title}} ---- {{task.assignee?.name}}<br>
+</span> 
+
+ <p> Working with ngClass and ngStyle Pending </p>
+ <div></div>
