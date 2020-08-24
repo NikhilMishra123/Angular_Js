@@ -1,0 +1,13 @@
+
+
+<span
+	class="glyphicon"
+	[class.glyphicon-star]="isFavourite"
+	[class.glyphicon-star-empty]="!isFavourite"
+	(click)="onClick()"
+> star</span>
+<!-- the above glyphicon class is not present in the bootstrap.css file 
+	Error :- Bug reported  --> 
+<!-- Bug Solved ::   Actually  Bootstrap 4 does not have its own icon library (Glyphicons from Bootstrap 3 are not supported in BS4 -->
+
+<p> Hi, Nikhil </p>

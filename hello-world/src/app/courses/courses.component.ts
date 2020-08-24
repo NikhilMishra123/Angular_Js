@@ -11,6 +11,8 @@ import {CoursesService} from './courses.service';
    			{{ "Price " +co.price}} <br>
    			{{ "Date " + (co.relase_date)}} <br> 
    		</p>
+
+       <button  class = "btn btn-primary" [class.active]="isActive" (click) = "OnClicking()" > Save </button>
    	 	`
    	
 
@@ -21,6 +23,7 @@ import {CoursesService} from './courses.service';
 })
 export class CoursesComponent {
 
+  isActive = true ;
 	title = " List of courses available ";
 	course;
 	// learning phase 1 
@@ -33,4 +36,9 @@ export class CoursesComponent {
 	this.course = service_obj.getCourses();
 	console.log(this.course);
    } 
+
+   OnClicking()
+   {
+     console.log("Clicked performed ");
+   }
 }
