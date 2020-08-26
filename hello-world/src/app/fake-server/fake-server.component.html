@@ -1,0 +1,9 @@
+<p>fake-server works!</p>
+<input type="text" #postdata name="post" (keyup.enter)="addPost(postdata)">
+<p  *ngFor='let obj of this.posts'>
+	{{obj.id+"    "}}{{obj.title}}<br>{{obj.body}}
+	<button class="btn btn-primary " (click)='onDelete(obj)'>Delete</button>
+	<button class="btn btn-primary " (click)='updatePost(obj)'>Update</button>
+	
+	<br><br>
+</p>
